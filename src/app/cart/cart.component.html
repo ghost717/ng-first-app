@@ -1,5 +1,8 @@
 <input type="text" [(ngModel)]="newItem">
-<button (click)="onAddItem()" class="btn btn-primary">Add item</button>
+<button
+  (click)="onAddItem()"
+  class="btn"
+  [ngClass]="{'btn-primary': newItem !== '', 'btn-default': newItem === ''}">Add item</button>
 
 <hr>
 
