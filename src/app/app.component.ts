@@ -12,7 +12,12 @@ export class AppComponent {
   title = 'App';
   rootName = 'Dawis';
   number = 0;
+  rootItems = ['Apples', 'Bananas'];
 
+  onItemWasAdded(newItem){
+    this.rootItems.push(newItem);
+    console.log(this.rootItems);
+  }
   onIncrease(){
     // this.number = this.number + 1;
     this.number = random(1, 10);

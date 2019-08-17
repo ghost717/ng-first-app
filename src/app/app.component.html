@@ -11,3 +11,11 @@
 
 <p>{{number}}</p>
 <button (click)="onIncrease()" class="btn btn-primary">Increase number</button>
+
+<div class="container" style="margin: 20px">
+  <div class="row">
+    <div class="col-xs-12">
+      <app-cart [items]="rootItems" (itemAdded)="onItemWasAdded($event)"></app-cart>
+    </div>
+  </div>
+</div>
