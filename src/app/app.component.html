@@ -7,5 +7,5 @@
 </div>
 <hr>
 <app-dashboard></app-dashboard>
-<app-user></app-user>
+<app-user [name]="rootName" (nameChanged)="onNameChanged($event)"></app-user>
 

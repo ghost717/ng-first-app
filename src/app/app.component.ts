@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'App';
+  rootName = 'Dawis';
+
+  onNameChanged(newName){
+    this.rootName = newName;
+  }
 }
