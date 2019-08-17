@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import 'lodash';
+
+declare var _: any;
 
 @Component({
   selector: 'app-root',
@@ -11,7 +14,8 @@ export class AppComponent {
   number = 0;
 
   onIncrease(){
-    this.number = this.number + 1;
+    // this.number = this.number + 1;
+    this.number = _.random(1, 10);
   }
   onNameChanged(newName){
     this.rootName = newName;
