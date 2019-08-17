@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+
 import { StarWarsService } from '../star-wars.service';
 
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.css'],
-  providers: [StarWarsService]
+  styleUrls: ['./tabs.component.css']
 })
 export class TabsComponent implements OnInit {
   characters = [];
   chosenList = 'all';
-  swSerwice: StarWarsService;
+  swService: StarWarsService;
 
   constructor(swService: StarWarsService) {
     this.swService = swService;
@@ -24,7 +24,7 @@ export class TabsComponent implements OnInit {
   }
 
   getCharacters() {
-    this.characters = swService.getCharacters(this.chosenList);
+    this.characters = this.swService.getCharacters(this.chosenList);
     return this.characters;
   }
 }
