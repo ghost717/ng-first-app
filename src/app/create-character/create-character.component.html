@@ -2,6 +2,7 @@
   <div class="form-group">
     <label for="name">Character name</label>
     <input type="text" id="name" name="name" class="form-control" ngModel required
+    [(ngModel)]="defaultName"
     #nameCtrl="ngModel"
     >
     <span class="help-block" *ngIf="nameCtrl.invalid && nameCtrl.touched">Please enter a name!</span>
