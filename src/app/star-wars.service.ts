@@ -5,6 +5,7 @@ import { EventEmitter } from 'events';
 import { Subject } from 'rxjs/internal/Subject';
 import { HttpClient } from '@angular/common/http';
 import { Response } from 'selenium-webdriver/http';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class StarWarsService {
@@ -22,11 +23,31 @@ export class StarWarsService {
   }
 
   fetchCharacters() {
-    this.http.get('https://swapi.co/api/people/').subscribe(
-      (response: Response) => {
-        console.log(response);
+    this.http.get('https://swapi.co/api/people/')
+    .map((response: Response) => {
+      const data = response.json();
+      const extractedChars = data.results;
+      const chars = extractedChars.map((char) => {
+        return {name: char.name, side: ''};
+      });
+
+      return response.json();
+    })
+    .subscribe(
+      (data) => {
+        console.log(data);
+        this.characters = data;
+        this.charactersChanged.next();
       }
     );
+    // // .map((response: Response) => {
+    // //   return response.json();
+    // // })
+    // .subscribe(
+    //   (response: Response) => {
+    //     console.log(response);
+    //   }
+    // );
   }
 
   getCharacters(chosenList) {
